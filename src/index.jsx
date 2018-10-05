@@ -290,7 +290,7 @@ export default createReactClass({
       PropTypes.string,
       PropTypes.func
     ]),
-    dateFormat: PropTypes.string, // 'MM/DD/YYYY', 'DD/MM/YYYY', 'YYYY/MM/DD', 'DD-MM-YYYY'
+    dateFormat: PropTypes.string,
     bsClass: PropTypes.string,
     bsSize: PropTypes.string,
     calendarContainer: PropTypes.object,
@@ -313,7 +313,7 @@ export default createReactClass({
 
   getDefaultProps() {
     const language = typeof window !== 'undefined' && window.navigator ? (window.navigator.userLanguage || window.navigator.language || '').toLowerCase() : '';
-    const dateFormat = !language || language === 'en-us' ? 'MM/DD/YYYY' : 'DD/MM/YYYY';
+    const dateFormat = !language || language === 'en-us' ? 'ММ/ДД/ГГГГ' : 'ДД/ММ/ГГГГ';
     return {
       cellPadding: '5px',
       dayLabels: ['Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб', 'Вс'],
@@ -489,10 +489,10 @@ export default createReactClass({
 
     //this method is executed during intialState setup... handle a missing state properly
     const separator = (this.state ? this.state.separator : this.props.dateFormat.match(/[^A-Z]/)[0]);
-    if (this.props.dateFormat.match(/MM.DD.YYYY/)) {
+    if (this.props.dateFormat.match(/ММ.ДД.ГГГГ/)) {
       return (month > 9 ? month : `0${month}`) + separator + (day > 9 ? day : `0${day}`) + separator + date.getFullYear();
     }
-    else if (this.props.dateFormat.match(/DD.MM.YYYY/)) {
+    else if (this.props.dateFormat.match(/ДД.ММ.ГГГГ/)) {
       return (day > 9 ? day : `0${day}`) + separator + (month > 9 ? month : `0${month}`) + separator + date.getFullYear();
     }
     else {
@@ -502,7 +502,7 @@ export default createReactClass({
 
   handleBadInput(originalValue) {
     const parts = originalValue.replace(new RegExp(`[^0-9${this.state.separator}]`), '').split(this.state.separator);
-    if (this.props.dateFormat.match(/MM.DD.YYYY/) || this.props.dateFormat.match(/DD.MM.YYYY/)) {
+    if (this.props.dateFormat.match(/ММ.ДД.ГГГГ/) || this.props.dateFormat.match(/ДД.ММ.ГГГГ/)) {
       if (parts[0] && parts[0].length > 2) {
         parts[1] = parts[0].slice(2) + (parts[1] || '');
         parts[0] = parts[0].slice(0, 2);
@@ -543,7 +543,7 @@ export default createReactClass({
     }
 
     let month, day, year;
-    if (this.props.dateFormat.match(/MM.DD.YYYY/)) {
+    if (this.props.dateFormat.match(/ММ.ДД.ГГГГ/)) {
       if (!inputValue.match(/[0-1][0-9].[0-3][0-9].[1-2][0-9][0-9][0-9]/)) {
         return this.handleBadInput(originalValue);
       }
@@ -551,7 +551,7 @@ export default createReactClass({
       month = inputValue.slice(0,2).replace(/[^0-9]/g, '');
       day = inputValue.slice(3,5).replace(/[^0-9]/g, '');
       year = inputValue.slice(6,10).replace(/[^0-9]/g, '');
-    } else if (this.props.dateFormat.match(/DD.MM.YYYY/)) {
+    } else if (this.props.dateFormat.match(/ДД.ММ.ГГГГ/)) {
       if (!inputValue.match(/[0-3][0-9].[0-1][0-9].[1-2][0-9][0-9][0-9]/)) {
         return this.handleBadInput(originalValue);
       }
