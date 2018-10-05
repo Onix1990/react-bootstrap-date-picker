@@ -316,10 +316,10 @@ export default createReactClass({
     const dateFormat = !language || language === 'en-us' ? 'MM/DD/YYYY' : 'DD/MM/YYYY';
     return {
       cellPadding: '5px',
-      dayLabels: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
-      monthLabels: ['January', 'February', 'March', 'April',
-        'May', 'June', 'July', 'August', 'September',
-        'October', 'November', 'December'],
+      dayLabels: ['Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб', 'Вс'],
+      monthLabels: ['Январь', 'Февраль', 'Март', 'Апрель',
+        'Май', 'Июнь', 'Июль', 'Август', 'Сентябрь',
+        'Октябрь', 'Ноябрь', 'Декабрь'],
       clearButtonElement: '×',
       previousButtonElement: '<',
       nextButtonElement: '>',
