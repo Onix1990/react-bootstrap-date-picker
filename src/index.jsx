@@ -358,7 +358,7 @@ export default createReactClass({
     state.focused = false;
     state.inputFocused = false;
     state.placeholder = this.props.placeholder || this.props.dateFormat;
-    state.separator = this.props.dateFormat.match(/[^A-Z]/)[0];
+    state.separator = this.props.dateFormat.match(/[^А-Я]/)[0];
     return state;
   },
 
@@ -488,7 +488,7 @@ export default createReactClass({
     const day = date.getDate();
 
     //this method is executed during intialState setup... handle a missing state properly
-    const separator = (this.state ? this.state.separator : this.props.dateFormat.match(/[^A-Z]/)[0]);
+    const separator = (this.state ? this.state.separator : this.props.dateFormat.match(/[^А-Я]/)[0]);
     if (this.props.dateFormat.match(/ММ.ДД.ГГГГ/)) {
       return (month > 9 ? month : `0${month}`) + separator + (day > 9 ? day : `0${day}`) + separator + date.getFullYear();
     }
