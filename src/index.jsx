@@ -534,10 +534,11 @@ export default createReactClass({
 
   handleInputChange() {
 
-    const originalValue = ReactDOM.findDOMNode(this.refs.input).value;
-    const inputValue = originalValue.replace(/(-|\/\/)/g, this.state.separator).slice(0,10);
+    var originalValue = _reactDom2.default.findDOMNode(this.refs.input).value;
+    var inputValue = originalValue.replace(/(-|\/\/)/g, this.state.separator).slice(0, 10);
+    originalValue = inputValue;
 
-    if (!inputValue) {
+    if (!inputValue || inputValue[0] == '/') {
       this.clear();
       return;
     }
