@@ -316,7 +316,7 @@ export default createReactClass({
     const dateFormat = !language || language === 'en-us' ? 'ММ/ДД/ГГГГ' : 'ДД/ММ/ГГГГ';
     return {
       cellPadding: '5px',
-      dayLabels: ['Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб', 'Вс'],
+      dayLabels: ['Вс', 'Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб'],
       monthLabels: ['Январь', 'Февраль', 'Март', 'Апрель',
         'Май', 'Июнь', 'Июль', 'Август', 'Сентябрь',
         'Октябрь', 'Ноябрь', 'Декабрь'],
