@@ -431,6 +431,12 @@ export default createReactClass({
         this.props.onBlur(event);
       }
     }
+
+    const originalValue = _reactDom2.default.findDOMNode(this.refs.input).value;
+
+    if ((originalValue.length === 0 || originalValue.length === 10 ) && e.key === '/') {
+      e.preventDefault();
+    }
   },
 
   handleFocus() {
@@ -534,8 +540,9 @@ export default createReactClass({
 
   handleInputChange() {
 
-    const originalValue = ReactDOM.findDOMNode(this.refs.input).value;
-    const inputValue = originalValue.replace(/(-|\/\/)/g, this.state.separator).slice(0,10);
+    var originalValue = _reactDom2.default.findDOMNode(this.refs.input).value;
+    var inputValue = originalValue.replace(/(-|\/\/)/g, this.state.separator).slice(0, 10);
+    originalValue = inputValue;
 
     if (!inputValue) {
       this.clear();
